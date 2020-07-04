@@ -32,12 +32,14 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public boolean register(userlist u) throws Exception {
-		//判断用户是否存在，密码是否符合规定，qq是否存在,账号是否创建成功
+		//判断用户是否存在，密码是否符合规定，qq是否存在,是否符合规定,账号是否创建成功
 		if(!DAOFactory.getIUserDAOInstance(this.dbc.getConnection()).findN(u.getUsername())) {
 			if(DAOFactory.getIUserDAOInstance(this.dbc.getConnection()).IsP(u.getPassword())) {
 				if(!DAOFactory.getIUserDAOInstance(this.dbc.getConnection()).findQ(u.getQq())) {
-					if(DAOFactory.getIUserDAOInstance(this.dbc.getConnection()).doCreate(u)) {
-						return true;
+					if(DAOFactory.getIUserDAOInstance(this.dbc.getConnection()).IsQ(u.getQq())) {
+						if(DAOFactory.getIUserDAOInstance(this.dbc.getConnection()).doCreate(u)) {
+							return true;
+						}
 					}
 				}
 			}

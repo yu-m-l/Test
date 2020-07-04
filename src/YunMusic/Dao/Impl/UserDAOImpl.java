@@ -109,6 +109,13 @@ public class UserDAOImpl implements IUserDAO {
     	return true;
     }
     
+    public boolean IsQ(String q) {
+    	if(q.length()>7&&q.length()<15) {
+    		return true;
+    	}
+    	return false;
+    }
+    
     @Override
     public boolean findQ(String q) throws Exception{
     	String sql = "Select qq from userlist WHERE qq = ?";

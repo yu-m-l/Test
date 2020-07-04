@@ -32,9 +32,9 @@ class IHistoryServiceTest {
 	void testDelMusic()
 	{
 		History h=new History();
-		h.setId("23");
-		h.setUname("Сƻ");
-		h.setUsername("dddfd");
+		h.setId("1");
+		h.setUname("Сƻ��");
+		h.setUsername("sdfsdfd");
 		try {
 			TestCase.assertTrue(new ServiceFactory().getIHistoryServiceInstance().DelMusic(h));
 		} catch (Exception e) {

@@ -59,6 +59,13 @@ public interface IUserDAO extends IDAO<userlist>{
 	 * @return 如果符合，返回true，否则返回false
 	 */
 	public boolean IsP(String p);
+	
+	/**
+	 * 判断qq是否符合注册规定
+	 * @param q 要判断的qq号
+	 * @return 如果符合，返回true,否则返回false
+	 */
+	public boolean IsQ(String q);
 
 	/**
 	 * 判断qq是否已经存在

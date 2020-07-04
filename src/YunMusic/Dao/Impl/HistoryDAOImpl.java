@@ -35,17 +35,19 @@ public class HistoryDAOImpl implements IHistoryDAO{
 	}
 	
 	public boolean doRemove(History h) throws Exception{
-		String sql = "Delete from History WHERE id = ?";
+		String sql = "Delete from History WHERE id = ? and username=?";
     	this.pstmt = this.conn.prepareStatement(sql);
     	this.pstmt.setString(1, h.getId());
+    	this.pstmt.setString(2, h.getUsername());
         return this.pstmt.executeUpdate()>0; 
 	}
 
 	@Override
 	public boolean doFind(History h) throws Exception {
-		String sql="Select id from History Where id=?";
+		String sql="Select id from History Where id=? and username=?";
 		this.pstmt = this.conn.prepareStatement(sql);
         this.pstmt.setString(1, h.getId());
+        this.pstmt.setString(2, h.getUsername());
         ResultSet rs=pstmt.executeQuery();
 		if(rs.next()) {
 			return true;
